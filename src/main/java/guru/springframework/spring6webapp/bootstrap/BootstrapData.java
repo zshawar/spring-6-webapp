@@ -32,13 +32,6 @@ public class BootstrapData implements CommandLineRunner {
         ddd.setTitle("Domain Driven Design");
         ddd.setIsbn("978-3-16-148410-0");
 
-        Publisher hc = new Publisher();
-        hc.setPublisherName("HarperCollins");
-        hc.setAddress("123 Street");
-        hc.setCity("Charlotte");
-        hc.setState("NC");
-        hc.setZipCode("12345");
-
         Author ericSaved = authorRepository.save(eric);
         Book dddSaved = bookRepository.save(ddd);
 
@@ -56,8 +49,21 @@ public class BootstrapData implements CommandLineRunner {
         ericSaved.getBooks().add(dddSaved);
         rodSaved.getBooks().add(noEJBSaved);
 
+        Publisher hc = new Publisher();
+        hc.setPublisherName("HarperCollins");
+        hc.setAddress("123 Street");
+        hc.setCity("Charlotte");
+        hc.setState("NC");
+        hc.setZipCode("12345");
+
+        Publisher hcSaved = publisherRepository.save(hc);
+        dddSaved.setPublisher(hcSaved);
+        noEJBSaved.setPublisher(hcSaved);
+
         authorRepository.save(ericSaved);
         authorRepository.save(rodSaved);
+        bookRepository.save(dddSaved);
+        bookRepository.save(noEJBSaved);
         publisherRepository.save(hc);
 
         System.out.println("In Bootstrap");
