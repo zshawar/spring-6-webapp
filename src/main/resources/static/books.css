@@ -1,0 +1,19 @@
+table, h1 {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    text-align: left;
+    padding: 12px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:first-child {
+    background-color: black;
+    color: white;
+}
